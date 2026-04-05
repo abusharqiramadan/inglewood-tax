@@ -11,32 +11,17 @@ import {
 import { motion } from 'framer-motion';
 import { CheckCircle, FileText, BarChart3, Send, Zap, Shield, File, Receipt, Wallet, LockIcon, Plus, Calendar, Calendar1, Calendar1Icon, CalendarCheck } from 'lucide-react';
 import { GiMapleLeaf } from 'react-icons/gi'
-import NoelPFP from '@/lib/images/noel-pfp.png'
+
+import { containerVariants, itemVariants } from '@/lib/motion-presets';
+import { HowItWorksSection } from '@/components/landing-page/how-it-works';
+import NavigationBar from '@/components/landing-page/nav-bar';
+import { CommonFooter } from '@/components/landing-page/common-footer';
+
+import Link from 'next/link';
 
 export default function InglewoodTaxLanding() {
-  const [hoveredStep, setHoveredStep] = useState(null);
   const [openFAQ, setOpenFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState('home');
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
 
   const paperShuffleVariants = {
     animate: {
@@ -93,17 +78,7 @@ export default function InglewoodTaxLanding() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(240, 253, 250, 0.85)), var(--bg-image)', backgroundSize: 'cover', backgroundPosition: 'center' } as React.CSSProperties}>
         {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-8 py-6">
-          <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-            <span className="text-emerald-500">◆</span> Inglewood Tax
-          </div>
-          <div className="hidden md:flex gap-8 text-gray-700">
-            <a href="#home" className="hover:text-emerald-600 transition font-medium">Home</a>
-            <a href="#team" className="hover:text-emerald-600 transition font-medium">Our Team</a>
-            <a href="#how" className="hover:text-emerald-600 transition font-medium">How It Works</a>
-            <a href="#contact" className="hover:text-emerald-600 transition font-medium">Contact</a>
-          </div>
-        </nav>
+        <NavigationBar />
 
         {/* Paper Shuffling Animation */}
         <div className="absolute top-32 right-12 w-40 h-40 opacity-20 pointer-events-none" aria-hidden="true">
@@ -163,12 +138,20 @@ export default function InglewoodTaxLanding() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-300/50 transition transform hover:scale-101">
-              Start Your Return
-            </button>
-            <button className="cursor-pointer px-8 py-4 border-2 border-blue-500 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition">
-              Learn More
-            </button>
+            <Link
+              href='#pricing'
+            >
+              <button className="cursor-pointer px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-300/50 transition transform hover:scale-101">
+                Start Your Return
+              </button>
+            </Link>
+            <Link
+              href='#team'
+            >
+              <button className="cursor-pointer px-8 py-4 border-2 border-blue-500 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition">
+                Learn More
+              </button>
+            </Link>
           </motion.div>
 
           {/* Trust indicators */}
@@ -281,94 +264,7 @@ export default function InglewoodTaxLanding() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how" className="relative py-24 px-4 bg-gradient-to-b from-white via-blue-50 to-emerald-50">
-        <motion.div
-          className="max-w-6xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
-              PROCESS
-            </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
-              How It Works
-            </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Four simple steps and you're done. No confusing forms, no back and forth — just send us your stuff and we take it from there.
-            </motion.p>
-          </div>
-
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {steps.map((step, idx) => {
-              const Icon = step.icon;
-
-              return (
-                <motion.div
-                  key={step.number}
-                  variants={itemVariants}
-                  className="relative cursor-pointer"
-                  onMouseEnter={() => setHoveredStep(step.number)}
-                  onMouseLeave={() => setHoveredStep(null)}
-                >
-                  <motion.div
-                    className={`rounded-2xl p-8 border transition-all duration-300 ${hoveredStep === step.number
-                      ? 'bg-gradient-to-br from-emerald-50 to-blue-50 border-emerald-300 shadow-lg'
-                      : 'bg-white border-gray-200 shadow-sm'
-                      }`}
-                    whileHover={{ y: -8 }}
-                  >
-                    <div className="flex items-start gap-4">
-                      {/* Step number circle */}
-                      <div
-                        className={`flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg border-4 transition-all ${hoveredStep === step.number
-                          ? 'bg-gradient-to-r from-emerald-500 to-blue-500 border-white scale-110 shadow-lg'
-                          : 'bg-gradient-to-r from-emerald-400 to-blue-400 border-white shadow-md'
-                          }`}
-                      >
-                        {step.number}
-                      </div>
-
-                      {/* Icon and content */}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <div
-                            className={`flex-shrink-0 p-2 rounded-lg transition-all ${hoveredStep === step.number
-                              ? 'bg-gradient-to-br from-emerald-500 to-blue-500'
-                              : 'bg-gradient-to-br from-emerald-100 to-blue-100'
-                              }`}
-                          >
-                            <Icon
-                              className={`w-5 h-5 ${hoveredStep === step.number ? 'text-white' : 'text-emerald-600'
-                                }`}
-                            />
-                          </div>
-                          <h3 className="text-2xl font-bold text-gray-900">{step.title}</h3>
-                        </div>
-                        <p className="text-gray-600 mb-4">{step.description}</p>
-                        <ul className="space-y-2">
-                          {step.details.map((detail, i) => (
-                            <li key={i} className="flex items-center gap-2 text-gray-700 text-sm">
-                              <div
-                                className={`w-1.5 h-1.5 rounded-full ${hoveredStep === step.number ? 'bg-emerald-500' : 'bg-blue-400'
-                                  }`}
-                              ></div>
-                              {detail}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-      </section>
+      <HowItWorksSection />
 
       {/* Security & Trust Section */}
       <section className="relative py-24 px-4 bg-gradient-to-r from-emerald-50 to-blue-50">
@@ -415,58 +311,31 @@ export default function InglewoodTaxLanding() {
         >
           <div className="text-center mb-16">
             <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
-              SUCCESS STORIES
+              Our Track Record
             </motion.div>
             <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
-              What our clients say
+              Every client. Every return. Done right.
             </motion.h2>
             <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Real people from Edmonton who came to us stressed and left with more money back than they expected.
+              We're a growing local service, and we're proud that every client we've worked with has been satisfied with their experience — and their results.
             </motion.p>
           </div>
 
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                quote: "I honestly didn't expect it to be this easy. I sent my documents over and heard back so fast. Got my refund quicker than I ever have before. Will definitely be coming back next year.",
-                name: "Sarah M."
-              },
-              {
-                quote: "I've always done my own taxes but decided to try Inglewood Tax this year. They found deductions I had no idea about and the whole thing was done before I knew it. Super happy I made the switch.",
-                name: "James T."
-              },
-              {
-                quote: "Really appreciated how straightforward everything was. No confusing back and forth, just sent my stuff and they handled it. Got a bigger return than last year too. Great service.",
-                name: "Priya K."
-              }
-            ].map((testimonial, idx) => (
-              <motion.article
-                key={idx}
-                variants={itemVariants}
-                className="rounded-2xl p-8 bg-white border border-gray-200 shadow-lg hover:shadow-xl transition"
-                whileHover={{ y: -8 }}
-              >
-                <div className="flex items-center gap-1 mb-4" aria-label="5 out of 5 stars">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-2xl">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  "{testimonial.quote}"
-                </p>
-                <div className="border-t border-gray-200 pt-4">
-                  <p className="font-bold text-gray-900">{testimonial.name}</p>
-                  <p className="text-emerald-600 text-sm">Edmonton, AB</p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
-          {/* Stats - replaced with honest value statements */}
+          {/* Honest satisfaction statement */}
           <motion.div
             variants={itemVariants}
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+            className="max-w-2xl mx-auto mb-16 rounded-2xl p-8 bg-white border border-gray-200 shadow-lg border-l-4 border-l-emerald-500"
+          >
+            <p className="text-gray-700 text-lg leading-relaxed">
+              We don't have a wall of reviews we're proud enough to brag about yet — we're still growing. What we can tell you is that every person we've helped has walked away happy with the work we did for them. We'd love for you to be next.
+            </p>
+            <p className="mt-4 text-emerald-600 font-medium text-sm">Inglewood Tax · Edmonton, AB</p>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
           >
             <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 border border-emerald-200">
               <p className="text-4xl font-bold text-emerald-600 mb-2">Local</p>
@@ -494,14 +363,23 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div
+              variants={itemVariants}
+              className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4"
+            >
               WHY CHOOSE US
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2
+              variants={itemVariants}
+              className="text-5xl font-bold text-gray-900 mb-4"
+            >
               DIY vs. Inglewood Tax
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Doing your own taxes takes time, and it's easy to miss things. Here's how we compare.
+            <motion.p
+              variants={itemVariants}
+              className="text-gray-600 text-lg max-w-2xl mx-auto"
+            >
+              You can DIY with tax software, or you can hand everything to us and know it was done right. Here’s what that really looks like side‑by‑side.
             </motion.p>
           </div>
 
@@ -509,41 +387,124 @@ export default function InglewoodTaxLanding() {
             <table className="w-full">
               <thead>
                 <tr className="border-b-2 border-emerald-200">
-                  <th className="text-left py-4 px-6 text-gray-900 font-bold">Feature</th>
-                  <th className="text-center py-4 px-6 text-gray-700 font-semibold">DIY (Tax Software)</th>
-                  <th className="text-center py-4 px-6 text-gray-700 font-semibold">Inglewood Tax</th>
+                  <th className="text-left py-4 px-6 text-gray-900 font-bold">
+                    Feature
+                  </th>
+                  <th className="text-center py-4 px-6 text-gray-700 font-semibold">
+                    DIY (Tax Software)
+                  </th>
+                  <th className="text-center py-4 px-6 text-gray-700 font-semibold">
+                    Inglewood Tax
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200">
-                  <td className="py-4 px-6 text-gray-900 font-medium">Time it takes you</td>
-                  <td className="text-center py-4 px-6 text-slate-900">Several hours</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">~5 mins to upload your docs</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Time it takes you
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    2–4+ hours of your own time
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    ~5 minutes to upload, we do the rest
+                  </td>
                 </tr>
+
                 <tr className="border-b border-gray-200 bg-gray-50">
-                  <td className="py-4 px-6 text-gray-900 font-medium">Deductions reviewed</td>
-                  <td className="text-center py-4 px-6 text-slate-900">Only what you know to enter</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">Everything that applies to you</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Who is doing the thinking
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    You follow software prompts and hope you answered correctly
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    A trained preparer reviews your full situation
+                  </td>
                 </tr>
+
                 <tr className="border-b border-gray-200">
-                  <td className="py-4 px-6 text-gray-900 font-medium">Expert support</td>
-                  <td className="text-center py-4 px-6 text-slate-900">❌</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">✓ Real people, real answers</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Deductions & credits
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    Only what you know to look for
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    We proactively look for every deduction that applies
+                  </td>
                 </tr>
+
                 <tr className="border-b border-gray-200 bg-gray-50">
-                  <td className="py-4 px-6 text-gray-900 font-medium">CRA audit support</td>
-                  <td className="text-center py-4 px-6 text-slate-900">❌ You're on your own</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">✓ We handle it at no extra cost</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Handling messy records
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    You manually enter and organize everything yourself
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    We sort, organize, and clean up your paperwork for you
+                  </td>
                 </tr>
+
                 <tr className="border-b border-gray-200">
-                  <td className="py-4 px-6 text-gray-900 font-medium">Chance of missing something</td>
-                  <td className="text-center py-4 px-6 text-slate-900">High, especially first time</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">Low — we double check everything</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Expert support
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    Limited help, usually via generic FAQs or chatbots
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    Real humans who can explain things in plain English
+                  </td>
                 </tr>
+
                 <tr className="border-b border-gray-200 bg-gray-50">
-                  <td className="py-4 px-6 text-gray-900 font-medium">Stress level</td>
-                  <td className="text-center py-4 px-6 text-slate-900">😬 Pretty high</td>
-                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">😌 We take care of it</td>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    CRA audit or review
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    You respond on your own to every CRA letter
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    We help prepare responses and explain what CRA wants
+                  </td>
+                </tr>
+
+                <tr className="border-b border-gray-200">
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Risk of missing something important
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    Higher — easy to misread questions or skip forms
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    Lower — every file is reviewed before it’s filed
+                  </td>
+                </tr>
+
+                <tr className="border-b border-gray-200 bg-gray-50">
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Stress level
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    😬 Second‑guessing every screen and number
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    😌 Upload, approve, and get on with your life
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className="py-4 px-6 text-gray-900 font-medium">
+                    Who it’s best for
+                  </td>
+                  <td className="text-center py-4 px-6 text-slate-900">
+                    Very simple returns and people who like doing it themselves
+                  </td>
+                  <td className="text-center py-4 px-6 text-emerald-600 font-bold">
+                    Anyone who wants it done right, with minimal time and hassle
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -551,8 +512,9 @@ export default function InglewoodTaxLanding() {
         </motion.div>
       </section>
 
+
       {/* Pricing Section */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+      <section id="pricing" className="relative py-24 px-4 bg-gradient-to-b from-white to-gray-50">
         <motion.div
           className="max-w-6xl mx-auto"
           variants={containerVariants}
@@ -570,13 +532,10 @@ export default function InglewoodTaxLanding() {
             <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
               Pick what fits your situation. Every plan includes a full review and EFILE submission — no hidden fees, ever.
             </motion.p>
-            <motion.div variants={itemVariants} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 border border-yellow-400">
-              <Zap className="w-4 h-4 text-yellow-600" />
-              <span className="text-yellow-700 text-sm font-semibold">Tax season is here — the sooner you file, the sooner you get paid</span>
-            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
             {/* Basic */}
             <motion.article
               variants={itemVariants}
@@ -601,9 +560,13 @@ export default function InglewoodTaxLanding() {
                   EFILE submission included
                 </li>
               </ul>
-              <button className="w-full py-3 border-2 border-emerald-500 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition cursor-pointer">
-                Get Started
-              </button>
+              <Link
+                href='#contact'
+              >
+                <button className="w-full py-3 border-2 border-emerald-500 text-emerald-600 font-semibold rounded-lg hover:bg-emerald-50 transition cursor-pointer">
+                  Get Started
+                </button>
+              </Link>
               <p className="text-center text-gray-400 text-xs mt-3">No payment until we review your file</p>
             </motion.article>
 
@@ -618,13 +581,10 @@ export default function InglewoodTaxLanding() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">Full Return</h3>
               <p className="text-emerald-100 mb-6">Best for most Albertans</p>
-              <p className="text-4xl font-bold text-white mb-1">
-                $249
-                <span className="text-lg text-emerald-100 line-through opacity-70 ml-2">$349</span>
-                <span className="text-lg text-emerald-100">/year</span>
+              <p className="text-4xl font-bold text-white mb-2">
+                $199<span className="text-lg text-emerald-100">/year</span>
               </p>
-              <p className="text-yellow-200 text-sm font-bold mb-1">You save $100 — limited time offer</p>
-              <p className="text-emerald-100 text-xs mb-8">Price goes back up once tax season ends</p>
+              <p className="text-emerald-100 text-sm mb-8">Great value for complex returns</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2 text-white">
                   <CheckCircle className="w-5 h-5 text-white" />
@@ -643,9 +603,15 @@ export default function InglewoodTaxLanding() {
                   Full deduction review
                 </li>
               </ul>
-              <button className="w-full py-3 bg-white text-emerald-600 font-semibold rounded-lg hover:bg-gray-100 transition cursor-pointer">
-                Claim This Price
-              </button>
+
+              <Link
+                href='#contact'
+              >
+                <button className="w-full py-3 bg-white text-emerald-600 font-semibold rounded-lg hover:bg-gray-100 transition cursor-pointer">
+                  Get Started
+                </button>
+              </Link>
+
               <p className="text-center text-emerald-100 text-xs mt-3">No payment until we review your file</p>
             </motion.article>
 
@@ -677,11 +643,18 @@ export default function InglewoodTaxLanding() {
                   Year-round support
                 </li>
               </ul>
-              <button className="w-full py-3 border-2 border-blue-500 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition cursor-pointer">
-                Get Started
-              </button>
+
+              <Link
+                href='#contact'
+              >
+                <button className="w-full py-3 border-2 border-blue-500 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition cursor-pointer">
+                  Get Started
+                </button>
+              </Link>
+
               <p className="text-center text-gray-400 text-xs mt-3">No payment until we review your file</p>
             </motion.article>
+
           </div>
         </motion.div>
       </section>
@@ -790,9 +763,13 @@ export default function InglewoodTaxLanding() {
             <button className="cursor-pointer px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:bg-gray-100 transition transform hover:scale-105">
               Claim Your Discount
             </button>
-            <button className="cursor-pointer px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition">
-              Book a Free Consultation
-            </button>
+            <Link
+              href='#contact'
+            >
+              <button className="cursor-pointer px-10 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition">
+                Book a Free Consultation
+              </button>
+            </Link>
           </motion.div>
 
           <motion.p variants={itemVariants} className="text-white/60 text-sm mt-8">
@@ -825,12 +802,12 @@ export default function InglewoodTaxLanding() {
           <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200">
               <p className="text-emerald-600 font-bold text-lg mb-1">📧 Email</p>
-              <p className="text-gray-700">hello@inglewoodtax.ca</p>
+              <p className="text-gray-700">inglewoodtax@gmail.com</p>
               <p className="text-gray-400 text-sm mt-1">We reply within a few hours</p>
             </div>
             <div className="p-6 rounded-2xl bg-blue-50 border border-blue-200">
               <p className="text-blue-600 font-bold text-lg mb-1">📞 Phone</p>
-              <p className="text-gray-700">+1 (780) 000-0000</p>
+              <p className="text-gray-700">+1 (780) 616-9824</p>
               <p className="text-gray-400 text-sm mt-1">Open 7 days a week</p>
             </div>
             <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200">
@@ -857,6 +834,8 @@ export default function InglewoodTaxLanding() {
           <p className="text-gray-400 text-xs">© 2026 Inglewood Tax. All rights reserved.</p>
         </div>
       </footer>
+
+      <CommonFooter />
     </main>
   );
 }

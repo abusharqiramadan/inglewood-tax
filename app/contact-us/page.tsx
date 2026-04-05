@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, Clock, MapPin } from 'lucide-react'
-import NavigationBar from './NavigationBar' // adjust path
+import NavigationBar from '@/components/landing-page/nav-bar'
 
 export default function ContactUsPage() {
     const [userTz, setUserTz] = useState('')

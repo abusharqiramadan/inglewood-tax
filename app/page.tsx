@@ -33,7 +33,7 @@ export default function InglewoodTaxLanding() {
         repeat: Infinity,
       },
     },
-  };
+  } as const;
 
   const paperIcons = [
     { Icon: FileText, color: 'text-blue-500', delay: 0 },
@@ -90,7 +90,7 @@ export default function InglewoodTaxLanding() {
                 left: `${idx * 8}px`,
                 top: `${idx * 8}px`,
               }}
-              variants={paperShuffleVariants}
+              variants={paperShuffleVariants as any}
               animate="animate"
               transition={{ delay }}
             >
@@ -107,7 +107,7 @@ export default function InglewoodTaxLanding() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="mb-6 flex gap-5 lg:flex-row justify-center flex-wrap">
+          <motion.div variants={itemVariants as any} className="mb-6 flex gap-5 lg:flex-row justify-center flex-wrap">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-100 border border-sky-400">
               <CalendarCheck className="w-4 h-4 text-sky-600" />
               <span className="text-sky-700 text-sm font-semibold">Open 7 Days A Week</span>
@@ -123,7 +123,7 @@ export default function InglewoodTaxLanding() {
           </motion.div>
 
           <motion.h1
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
           >
             Get every dollar you're owed.
@@ -131,13 +131,13 @@ export default function InglewoodTaxLanding() {
           </motion.h1>
 
           <motion.p
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             We look at every deduction, get your return filed fast, and keep it simple the whole way through. You just send us your papers — we do the rest 😌
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div variants={itemVariants as any} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href='#pricing'
             >
@@ -156,7 +156,7 @@ export default function InglewoodTaxLanding() {
 
           {/* Trust indicators */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="mt-12 flex flex-col sm:flex-row justify-center gap-8 text-gray-600 text-sm"
           >
             <div className="flex items-center gap-2">
@@ -185,13 +185,13 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               OUR TEAM
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
               Meet the people behind your return
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <motion.p variants={itemVariants as any} className="text-gray-600 text-lg max-w-2xl mx-auto">
               A small, local team that actually knows your name — and works hard to get you every dollar back.
             </motion.p>
           </div>
@@ -200,7 +200,7 @@ export default function InglewoodTaxLanding() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {/* Betty Juan */}
             <motion.article
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200 hover:shadow-xl transition"
               whileHover={{ y: -8 }}
             >
@@ -226,7 +226,7 @@ export default function InglewoodTaxLanding() {
 
             {/* Noel Ramadan */}
             <motion.article
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200 hover:shadow-xl transition"
               whileHover={{ y: -8 }}
             >
@@ -253,7 +253,7 @@ export default function InglewoodTaxLanding() {
 
           {/* Trust Statement */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200"
           >
             <p className="text-center text-gray-700 text-lg">
@@ -276,22 +276,22 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               YOUR DATA IS SAFE
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
               Security You Can Trust
             </motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div variants={itemVariants} className="rounded-2xl p-8 bg-white border border-gray-200 text-center">
+            <motion.div variants={itemVariants as any} className="rounded-2xl p-8 bg-white border border-gray-200 text-center">
               <GiMapleLeaf className="w-12 h-12 text-red-600 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">CRA Compliant</h3>
               <p className="text-gray-600">We follow all Canada Revenue Agency rules and regulations</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="rounded-2xl p-8 bg-white border border-gray-200 text-center">
+            <motion.div variants={itemVariants as any} className="rounded-2xl p-8 bg-white border border-gray-200 text-center">
               <LockIcon className="w-12 h-12 text-emerald-600 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-2">Privacy Protected</h3>
               <p className="text-gray-600">Your information is never shared with third parties</p>
@@ -310,20 +310,20 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               Our Track Record
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
               Every client. Every return. Done right.
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <motion.p variants={itemVariants as any} className="text-gray-600 text-lg max-w-2xl mx-auto">
               We're a growing local service, and we're proud that every client we've worked with has been satisfied with their experience — and their results.
             </motion.p>
           </div>
 
           {/* Honest satisfaction statement */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="max-w-2xl mx-auto mb-16 rounded-2xl p-8 bg-white border border-gray-200 shadow-lg border-l-4 border-l-emerald-500"
           >
             <p className="text-gray-700 text-lg leading-relaxed">
@@ -334,7 +334,7 @@ export default function InglewoodTaxLanding() {
 
           {/* Stats */}
           <motion.div
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
           >
             <div className="p-6 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 border border-emerald-200">
@@ -364,19 +364,19 @@ export default function InglewoodTaxLanding() {
         >
           <div className="text-center mb-16">
             <motion.div
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4"
             >
               WHY CHOOSE US
             </motion.div>
             <motion.h2
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="text-5xl font-bold text-gray-900 mb-4"
             >
               DIY vs. Inglewood Tax
             </motion.h2>
             <motion.p
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="text-gray-600 text-lg max-w-2xl mx-auto"
             >
               You can DIY with tax software, or you can hand everything to us and know it was done right. Here’s what that really looks like side‑by‑side.
@@ -523,13 +523,13 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               SIMPLE PRICING
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
               Straightforward Prices, No Surprises
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <motion.p variants={itemVariants as any} className="text-gray-600 text-lg max-w-2xl mx-auto">
               Pick what fits your situation. Every plan includes a full review and EFILE submission — no hidden fees, ever.
             </motion.p>
           </div>
@@ -538,7 +538,7 @@ export default function InglewoodTaxLanding() {
 
             {/* Basic */}
             <motion.article
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="rounded-2xl p-8 bg-white border border-gray-200 shadow-lg"
               whileHover={{ y: -8 }}
             >
@@ -572,7 +572,7 @@ export default function InglewoodTaxLanding() {
 
             {/* Popular */}
             <motion.article
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="rounded-2xl p-8 bg-gradient-to-br from-emerald-500 to-blue-500 shadow-xl relative md:scale-105"
               whileHover={{ y: -8 }}
             >
@@ -617,7 +617,7 @@ export default function InglewoodTaxLanding() {
 
             {/* Business */}
             <motion.article
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="rounded-2xl p-8 bg-white border border-gray-200 shadow-lg"
               whileHover={{ y: -8 }}
             >
@@ -669,13 +669,13 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-16">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               FAQ
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
               Common Questions
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg">
+            <motion.p variants={itemVariants as any} className="text-gray-600 text-lg">
               Can't find what you're looking for? Just reach out — we're happy to help.
             </motion.p>
           </div>
@@ -718,7 +718,7 @@ export default function InglewoodTaxLanding() {
                   a: "Really easy. You just upload your documents through our secure link, we review everything, and we let you know if we need anything else. Most clients are done on their end in under 10 minutes."
                 }
               ].map((faq, idx) => (
-                <motion.div key={idx} variants={itemVariants} className="mb-4">
+                <motion.div key={idx} variants={itemVariants as any} className="mb-4">
                   <AccordionItem value={`faq-${idx}`} className="rounded-2xl border border-gray-200 bg-white hover:shadow-lg transition overflow-hidden">
                     <AccordionTrigger className="p-6 text-left hover:bg-emerald-50 transition [&[data-state=open]>svg]:rotate-45 group">
                       <h3 className="text-lg font-bold text-gray-900 text-left">{faq.q}</h3>
@@ -743,23 +743,23 @@ export default function InglewoodTaxLanding() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div variants={itemVariants} className="inline-block mb-6 px-4 py-2 rounded-full bg-white/20 border border-white/50">
+          <motion.div variants={itemVariants as any} className="inline-block mb-6 px-4 py-2 rounded-full bg-white/20 border border-white/50">
             <span className="text-white font-bold">🕐 Tax Season Offer</span>
           </motion.div>
 
-          <motion.h2 variants={itemVariants} className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <motion.h2 variants={itemVariants as any} className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             20% off your first return — this tax season only
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="text-xl text-white/90 mb-4 max-w-2xl mx-auto">
+          <motion.p variants={itemVariants as any} className="text-xl text-white/90 mb-4 max-w-2xl mx-auto">
             We're offering 20% off for new clients this tax season. Spots are limited since we review every return personally — we'd rather do it right than rush through a hundred files.
           </motion.p>
 
-          <motion.p variants={itemVariants} className="text-white/70 text-md mb-10 max-w-xl mx-auto">
+          <motion.p variants={itemVariants as any} className="text-white/70 text-md mb-10 max-w-xl mx-auto">
             You also get a free 15-minute consultation so we can make sure we're the right fit before you commit to anything.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div variants={itemVariants as any} className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="cursor-pointer px-10 py-4 bg-white text-emerald-600 font-bold rounded-lg hover:bg-gray-100 transition transform hover:scale-105">
               Claim Your Discount
             </button>
@@ -772,7 +772,7 @@ export default function InglewoodTaxLanding() {
             </Link>
           </motion.div>
 
-          <motion.p variants={itemVariants} className="text-white/60 text-sm mt-8">
+          <motion.p variants={itemVariants as any} className="text-white/60 text-sm mt-8">
             No pressure, no commitment. Just a quick chat to see how we can help.
           </motion.p>
         </motion.div>
@@ -788,18 +788,18 @@ export default function InglewoodTaxLanding() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className="text-center mb-12">
-            <motion.div variants={itemVariants} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
+            <motion.div variants={itemVariants as any} className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4">
               CONTACT
             </motion.div>
-            <motion.h2 variants={itemVariants} className="text-4xl font-bold text-gray-900 mb-4">
+            <motion.h2 variants={itemVariants as any} className="text-4xl font-bold text-gray-900 mb-4">
               Ready to reach out?
             </motion.h2>
-            <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-xl mx-auto">
+            <motion.p variants={itemVariants as any} className="text-gray-600 text-lg max-w-xl mx-auto">
               Whether it's a question, or your ready for your paperwork to be done, reach out in any way that works for you.
             </motion.p>
           </div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <motion.div variants={itemVariants as any} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200">
               <p className="text-emerald-600 font-bold text-lg mb-1">📧 Email</p>
               <p className="text-gray-700">inglewoodtax@gmail.com</p>

@@ -109,7 +109,7 @@ const BUSINESS_STEPS = [
 
 export function HowItWorksSection() {
     const [audience, setAudience] = useState<'individual' | 'business'>('individual');
-    const [hoveredStep, setHoveredStep] = useState(null);
+    const [hoveredStep, setHoveredStep] = useState<null | number>(null);
 
     const steps = audience === 'individual' ? INDIVIDUAL_STEPS : BUSINESS_STEPS;
 
@@ -128,22 +128,22 @@ export function HowItWorksSection() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <motion.div
-                        variants={itemVariants}
+                        variants={itemVariants as any}
                         className="text-emerald-600 uppercase text-sm font-bold tracking-widest mb-4"
                     >
                         PROCESS
                     </motion.div>
-                    <motion.h2 variants={itemVariants} className="text-5xl font-bold text-gray-900 mb-4">
+                    <motion.h2 variants={itemVariants as any} className="text-5xl font-bold text-gray-900 mb-4">
                         How It Works
                     </motion.h2>
-                    <motion.p variants={itemVariants} className="text-gray-600 text-lg max-w-2xl mx-auto">
+                    <motion.p variants={itemVariants as any} className="text-gray-600 text-lg max-w-2xl mx-auto">
                         Four simple steps and you're done. No confusing forms, no back and forth — just send us
                         your stuff and we take it from there.
                     </motion.p>
 
                     {/* Audience toggle */}
                     <motion.div
-                        variants={itemVariants}
+                        variants={itemVariants as any}
                         className="mt-6 inline-flex items-center rounded-full bg-white shadow-sm border border-gray-200 p-1"
                     >
                         <button
@@ -177,7 +177,7 @@ export function HowItWorksSection() {
                         return (
                             <motion.div
                                 key={step.number}
-                                variants={itemVariants}
+                                variants={itemVariants as any}
                                 className="relative cursor-pointer"
                                 onMouseEnter={() => setHoveredStep(step.number)}
                                 onMouseLeave={() => setHoveredStep(null)}

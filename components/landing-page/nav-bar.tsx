@@ -50,7 +50,7 @@ export default function NavigationBar() {
                     </Link>
                 </div>
 
-                {/* Login Button + Tip */}
+                {/* Login Button + Tip
                 <div className="flex flex-col items-end gap-1 text-sm">
                     <Link
                         href="/client/auth"
@@ -58,7 +58,7 @@ export default function NavigationBar() {
                     >
                         Client Portal
                     </Link>
-                </div>
+                </div> */}
             </div>
         </nav>
     )

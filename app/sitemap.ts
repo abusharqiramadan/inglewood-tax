@@ -2,7 +2,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://inglewoodtax.ca";
+  const baseUrl = "https://inglewoodtax.com";
 
   return [
     {
@@ -13,3 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 }
+
+export const dynamic = "force-static";
+export const revalidate = false;
